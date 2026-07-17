@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* Memaksa halaman dasar HTML dan body memiliki latar belakang gelap pekat */
+html, body {
+  background-color: #020617; /* Sesuai warna bg-slate-955 / slate-950 */
+  color: #f8fafc;
+  margin: 0;
+  padding: 0;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Animasi transisi halus untuk interaksi user */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}

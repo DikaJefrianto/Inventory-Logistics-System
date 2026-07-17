@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # 1. MongoDB - Database Utama
+  mongodb:
+    image: mongo:latest
+    container_name: logistics-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  # 2. Redis - Cache & Session Token
+  redis:
+    image: redis:alpine
+    container_name: logistics-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  # 3. Elasticsearch - Mesin Pencari Audit Log
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+    container_name: logistics-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false # Dinonaktifkan untuk mempermudah dev lokal
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9200:9200"
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+
+volumes:
+  mongo_data:
+  redis_data:
+  es_data:

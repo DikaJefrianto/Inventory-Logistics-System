@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: inventory-service
+  
+  # Koneksi MongoDB
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/logistics_inventory_db
+      
+  # Koneksi Redis
+    redis:
+      host: localhost
+      port: 6379
+
+  # Tambahkan baris ini untuk koneksi Elasticsearch
+  elasticsearch:
+    uris: http://localhost:9200
